@@ -24,11 +24,13 @@ fn main() {
     }
 
     let result = match transformation.as_str() {
-        "lowercase" => {raw_string.to_lowercase()}
-        "uppercase" => {raw_string.to_uppercase()}
-        "no-spaces" => {raw_string.replace(" ", "")}
-        "slugify"   => {slugify(raw_string)}
-        _ => {String::from("Unknown operation. Original string: ".to_owned() + &raw_string)}
+        "lowercase" => raw_string.to_lowercase(),
+        "uppercase" => raw_string.to_uppercase(),
+        "no-spaces" => raw_string.replace(' ', "").replace('\t',""),
+        "slugify"   => slugify(raw_string),
+        _ => {
+            "Unknown operation. Original string: ".to_owned() + &raw_string
+        }
     };
 
     println!("Result:\n{}", result);

@@ -68,7 +68,7 @@ impl fmt::Display for Csv {
 }
 
 fn pad_string(s: &str, length: usize) -> String {
-    if s.len() <= length {
+    if s.len() < length {
         format!(" {}{}",s.to_string(), " ".repeat(length - s.len() - 1))
     } else {
         format!("{}...", &s[..length - 3])
